@@ -1,0 +1,28 @@
+# Binários Go
+backend/*/bin/
+*.exe
+*.test
+*.out
+
+# Angular / Node
+node_modules/
+dist/
+.angular/cache/
+*.tsbuildinfo
+
+# Variáveis de ambiente
+.env
+*.env
+!*.env.example
+
+# Logs
+*.log
+
+# IDE / editores
+.idea/
+.vscode/
+*.swp
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
