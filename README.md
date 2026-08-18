@@ -167,4 +167,30 @@ scripts/              # setup-db, run-all, stop-all, e2e-smoke, simulações
 DETALHAMENTO_TECNICO.md  # Detalhamento técnico exigido pelo desafio
 ```
 
+## Simulação com massa de dados via Scripts
+
+<img width="967" height="1039" alt="20260818 113304" src="https://github.com/user-attachments/assets/28e256d7-54af-4845-aebf-27a11d3260d8" />
+<img width="1920" height="1040" alt="20260818 113308" src="https://github.com/user-attachments/assets/b88e4124-c33e-422a-9439-87f06c8af538" />
+<img width="967" height="1039" alt="20260818 113352" src="https://github.com/user-attachments/assets/7ae1b09b-9f3a-4e20-8b4d-989b7150ffdf" />
+<img width="967" height="1039" alt="20260818 113403" src="https://github.com/user-attachments/assets/87835688-3bf6-4c12-b2ee-f99e34d4a07a" />
+<img width="967" height="1039" alt="20260818 113407" src="https://github.com/user-attachments/assets/e59eabaf-5db7-41f7-811e-a0807edf678d" />
+<img width="967" height="1039" alt="20260818 113410" src="https://github.com/user-attachments/assets/33a4f6c1-c2f0-4aea-9f39-e2159b2065f6" />
+<img width="967" height="1039" alt="20260818 113435" src="https://github.com/user-attachments/assets/c22756d1-7c64-4947-a22e-2599c86ffbf7" />
+<img width="967" height="1039" alt="20260818 113439" src="https://github.com/user-attachments/assets/91694b24-a5a5-46c2-a827-aafa2a2a320e" />
+<img width="967" height="1039" alt="20260818 113444" src="https://github.com/user-attachments/assets/fb7fd8ee-078d-45dd-a153-056149638c91" />
+<img width="967" height="1039" alt="20260818 113449" src="https://github.com/user-attachments/assets/49d816e3-36a0-432f-9739-5d29149b64b7" />
+<img width="1920" height="1040" alt="20260818 113512" src="https://github.com/user-attachments/assets/6d02ce44-3f4d-4d12-801f-347e98390b8c" />
+<img width="967" height="1039" alt="20260818 113535" src="https://github.com/user-attachments/assets/1e9d7c5c-e9d3-4756-8041-85a25a4cf1fb" />
+<img width="967" height="1039" alt="20260818 113543" src="https://github.com/user-attachments/assets/bf487fdf-c93f-4055-b57e-7d3293d43471" />
+<img width="967" height="1039" alt="20260818 113550" src="https://github.com/user-attachments/assets/0ecc1c15-4e07-40e3-8aa6-48b217514f02" />
+<img width="967" height="1039" alt="20260818 113556" src="https://github.com/user-attachments/assets/d29ed299-56d3-4bd4-98cb-40c75f7663ac" />
+<img width="1920" height="1040" alt="20260818 113616" src="https://github.com/user-attachments/assets/85c357a5-2579-4abc-9084-43da6f67ced6" />
+<img width="967" height="1039" alt="20260818 113636" src="https://github.com/user-attachments/assets/c52119e0-017f-48dd-856f-7ae40cd29b43" />
+<img width="967" height="1039" alt="20260818 113646" src="https://github.com/user-attachments/assets/71c8e4d7-ba08-499d-8807-7a7a49142fd6" />
+<img width="967" height="1039" alt="20260818 113651" src="https://github.com/user-attachments/assets/aa67d0a6-a6e9-41fa-b1ae-9e8dc5131db3" />
+<img width="967" height="1039" alt="20260818 113658" src="https://github.com/user-attachments/assets/c20be6e5-9f56-46bb-94e1-54ad6c94d2a2" />
+<img width="1920" height="1040" alt="20260818 113721" src="https://github.com/user-attachments/assets/d0d90944-8e41-4bce-9a4f-76dd5d560a7d" />
+
+
+
 > Documento detalhado (ciclos de vida Angular, RxJS, bibliotecas, tratamento de erros no backend, frameworks Go etc.): **[DETALHAMENTO_TECNICO.md](./DETALHAMENTO_TECNICO.md)**
