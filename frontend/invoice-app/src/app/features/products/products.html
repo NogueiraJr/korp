@@ -1,0 +1,67 @@
+<div class="header">
+  <h2>Cadastro de Produtos</h2>
+  <button mat-flat-button color="primary" (click)="openCreate()">
+    <mat-icon>add</mat-icon>
+    Novo Produto
+  </button>
+</div>
+
+@if (loading) {
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+}
+
+<div class="table-container">
+  <table mat-table [dataSource]="products">
+    <ng-container matColumnDef="code">
+      <th mat-header-cell *matHeaderCellDef>Código</th>
+      <td mat-cell *matCellDef="let product">{{ product.code }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Descrição</th>
+      <td mat-cell *matCellDef="let product">{{ product.description }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="stock_quantity">
+      <th mat-header-cell *matHeaderCellDef>Saldo em Estoque</th>
+      <td mat-cell *matCellDef="let product">
+        <mat-chip [class.low-stock]="product.stock_quantity <= 0" [class.medium-stock]="product.stock_quantity > 0 && product.stock_quantity <= 5">
+          {{ product.stock_quantity }} un
+        </mat-chip>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="created_at">
+      <th mat-header-cell *matHeaderCellDef>Criado em</th>
+      <td mat-cell *matCellDef="let product">{{ product.created_at | date: 'dd/MM/yyyy HH:mm' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Ações</th>
+      <td mat-cell *matCellDef="let product" (click)="$event.stopPropagation()">
+        <button mat-icon-button matTooltip="Ver detalhes" (click)="openDetail(product)">
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Editar produto" (click)="openEdit(product)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      class="clickable-row"
+      (click)="openDetail(row)"
+      matTooltip="Clique para ver detalhes"
+    ></tr>
+  </table>
+
+  @if (!loading && products.length === 0) {
+    <div class="empty">
+      <mat-icon>inventory_2</mat-icon>
+      <p>Nenhum produto cadastrado. Clique em "Novo Produto" para começar.</p>
+    </div>
+  }
+</div>

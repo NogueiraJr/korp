@@ -1,0 +1,99 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+
+  h2 {
+    margin: 0;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .auto-refresh {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: var(--mat-sys-on-surface-variant);
+
+      .dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: #4caf50;
+        animation: pulse 1.5s infinite;
+      }
+    }
+
+    button mat-icon {
+      margin-right: 4px;
+    }
+  }
+}
+
+.table-container {
+  position: relative;
+  min-height: 200px;
+  max-height: calc(100dvh - 280px);
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.estoque-chip {
+  background-color: #7b1fa2 !important;
+  color: #fff !important;
+
+  ::ng-deep .mdc-evolution-chip__text-label {
+    color: #fff !important;
+  }
+}
+
+.faturamento-chip {
+  background-color: #1565c0 !important;
+  color: #fff !important;
+
+  ::ng-deep .mdc-evolution-chip__text-label {
+    color: #fff !important;
+  }
+}
+
+.event {
+  font-weight: 500;
+
+  &.error-event {
+    color: #d32f2f;
+  }
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 0;
+  color: var(--mat-sys-on-surface-variant);
+
+  mat-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}

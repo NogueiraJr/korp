@@ -1,0 +1,127 @@
+.summary {
+  margin-bottom: 16px;
+
+  .code {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  .description {
+    color: var(--mat-sys-on-surface-variant);
+    margin: 4px 0 8px;
+  }
+
+  .stock {
+    margin-bottom: 12px;
+
+    .zero {
+      background-color: #d32f2f !important;
+      color: #fff !important;
+
+      ::ng-deep .mdc-evolution-chip__text-label {
+        color: #fff !important;
+      }
+    }
+
+    .low {
+      background-color: #ef6c00 !important;
+      color: #fff !important;
+
+      ::ng-deep .mdc-evolution-chip__text-label {
+        color: #fff !important;
+      }
+    }
+  }
+
+  .meta {
+    display: flex;
+    gap: 24px;
+    font-size: 0.85rem;
+    color: var(--mat-sys-on-surface-variant);
+
+    span {
+      font-weight: 600;
+      color: var(--mat-sys-on-surface);
+    }
+  }
+}
+
+h3 {
+  font-size: 0.95rem;
+  margin: 16px 0 8px;
+}
+
+.empty-history {
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 0.85rem;
+}
+
+.usage-table {
+  width: 100%;
+
+  .clickable {
+    color: var(--mat-sys-primary);
+    cursor: pointer;
+    font-weight: 600;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .link-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+  }
+
+  .open {
+    background-color: #1976d2 !important;
+    color: #fff !important;
+
+    ::ng-deep .mdc-evolution-chip__text-label {
+      color: #fff !important;
+    }
+  }
+
+  .closed {
+    background-color: #388e3c !important;
+    color: #fff !important;
+
+    ::ng-deep .mdc-evolution-chip__text-label {
+      color: #fff !important;
+    }
+  }
+}
+
+.timeline {
+  max-height: 220px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .entry {
+    border-left: 3px solid var(--mat-sys-outline-variant);
+    padding-left: 12px;
+
+    .entry-time {
+      font-size: 0.75rem;
+      color: var(--mat-sys-on-surface-variant);
+    }
+
+    .entry-event {
+      font-weight: 600;
+
+      &.error {
+        color: #d32f2f;
+      }
+    }
+
+    .entry-summary {
+      font-size: 0.85rem;
+      color: var(--mat-sys-on-surface-variant);
+    }
+  }
+}

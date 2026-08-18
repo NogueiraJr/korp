@@ -1,0 +1,77 @@
+<mat-toolbar color="primary">
+  <span class="app-title">
+    <mat-icon>receipt_long</mat-icon>
+    Korp · Emissão de Notas Fiscais
+  </span>
+
+  <span class="status-badges">
+    <span class="service-control">
+      <span class="badge" [class.up]="estoque.status === 'up'" matTooltip="Serviço de Estoque">
+        <span class="dot" [class.up]="estoque.status === 'up'"></span>
+        Estoque
+      </span>
+      <button
+        mat-icon-button
+        class="control-btn"
+        [matTooltip]="isUp('estoque') ? 'Parar serviço de estoque' : 'Iniciar serviço de estoque'"
+        (click)="toggleService('estoque')"
+        [disabled]="busy !== null"
+        aria-label="Controle do serviço de estoque">
+        @if (busy === 'estoque') {
+          <mat-spinner diameter="16"></mat-spinner>
+        } @else if (estoque.status === 'up') {
+          <mat-icon>stop</mat-icon>
+        } @else {
+          <mat-icon>play_arrow</mat-icon>
+        }
+      </button>
+    </span>
+    <span class="service-control">
+      <span class="badge" [class.up]="faturamento.status === 'up'" matTooltip="Serviço de Faturamento">
+        <span class="dot" [class.up]="faturamento.status === 'up'"></span>
+        Faturamento
+      </span>
+      <button
+        mat-icon-button
+        class="control-btn"
+        [matTooltip]="isUp('faturamento') ? 'Parar serviço de faturamento' : 'Iniciar serviço de faturamento'"
+        (click)="toggleService('faturamento')"
+        [disabled]="busy !== null"
+        aria-label="Controle do serviço de faturamento">
+        @if (busy === 'faturamento') {
+          <mat-spinner diameter="16"></mat-spinner>
+        } @else if (faturamento.status === 'up') {
+          <mat-icon>stop</mat-icon>
+        } @else {
+          <mat-icon>play_arrow</mat-icon>
+        }
+      </button>
+    </span>
+  </span>
+
+  <span class="spacer"></span>
+
+  <span class="user">Olá, {{ auth.username }}</span>
+  <button mat-icon-button matTooltip="Sair" (click)="logout()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<nav mat-tab-nav-bar [tabPanel]="tabPanel">
+  @for (link of [
+    { label: 'Produtos', path: '/products', icon: 'inventory_2' },
+    { label: 'Notas Fiscais', path: '/invoices', icon: 'receipt' },
+    { label: 'Logs', path: '/logs', icon: 'terminal' },
+  ]; track link.path) {
+    <a mat-tab-link [routerLink]="link.path" routerLinkActive="mdc-tab-indicator--active" #rla="routerLinkActive" [active]="rla.isActive">
+      <mat-icon>{{ link.icon }}</mat-icon>
+      {{ link.label }}
+    </a>
+  }
+</nav>
+
+<div matTabNavPanel #tabPanel>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

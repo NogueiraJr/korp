@@ -1,0 +1,74 @@
+.app-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.status-badges {
+  display: flex;
+  gap: 12px;
+  margin-left: 32px;
+
+  .service-control {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: inherit;
+    opacity: 0.85;
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #f44336;
+    }
+
+    .dot.up {
+      background: #4caf50;
+    }
+  }
+
+  .control-btn {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    color: inherit;
+    opacity: 0.9;
+
+    ::ng-deep .mat-mdc-button-touch-target {
+      width: 30px;
+      height: 30px;
+    }
+
+    .mat-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+      line-height: 18px;
+    }
+  }
+}
+
+.spacer {
+  flex: 1;
+}
+
+.user {
+  font-size: 0.9rem;
+  margin-right: 8px;
+  opacity: 0.9;
+}
+
+.content {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}

@@ -1,0 +1,32 @@
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--mat-sys-on-surface-variant);
+  margin-top: 0;
+}
+
+.item-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
+
+  .product-field {
+    flex: 1;
+  }
+
+  .qty-field {
+    width: 110px;
+  }
+}
+
+.add-item {
+  margin-top: 4px;
+
+  mat-icon {
+    margin-right: 6px;
+  }
+}
+
+mat-dialog-actions button mat-spinner {
+  margin-right: 6px;
+}

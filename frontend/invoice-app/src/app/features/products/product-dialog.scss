@@ -1,0 +1,21 @@
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 240px;
+}
+
+.ai-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 4px;
+
+  button mat-icon,
+  button mat-spinner {
+    margin-right: 6px;
+  }
+}
+
+mat-dialog-actions button mat-spinner {
+  margin-right: 6px;
+}

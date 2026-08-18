@@ -1,0 +1,78 @@
+<h2 mat-dialog-title>Nota Fiscal #{{ invoice.number }}</h2>
+
+<mat-dialog-content>
+  <div class="summary">
+    <div class="status">
+      <mat-chip [class.open]="invoice.status === 'OPEN'" [class.closed]="invoice.status === 'CLOSED'">
+        {{ invoice.status === 'OPEN' ? 'Aberta' : 'Fechada' }}
+      </mat-chip>
+    </div>
+
+    <div class="meta">
+      <div><span>Criada em:</span> {{ invoice.created_at | date: 'dd/MM/yyyy HH:mm:ss' }}</div>
+      @if (invoice.closed_at) {
+        <div><span>Fechada em:</span> {{ invoice.closed_at | date: 'dd/MM/yyyy HH:mm:ss' }}</div>
+      }
+    </div>
+  </div>
+
+  <h3>Produtos utilizados nesta nota ({{ invoice.items.length }})</h3>
+  <table class="items-table">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Descrição</th>
+        <th class="right">Quantidade</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of invoice.items; track item.product_code) {
+        <tr>
+          <td class="code">
+            <button
+              class="product-link"
+              mat-button
+              color="primary"
+              (click)="openProduct(item.product_code)"
+              matTooltip="Ver detalhes do produto"
+            >
+              <mat-icon>inventory_2</mat-icon>
+              {{ item.product_code }}
+            </button>
+          </td>
+          <td>{{ item.description }}</td>
+          <td class="right">{{ item.quantity }}</td>
+        </tr>
+      }
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2" class="right total-label">Total de unidades:</td>
+        <td class="right total">{{ totalQuantity }}</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <h3>Histórico da nota</h3>
+  @if (loadingHistory) {
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  }
+
+  @if (!loadingHistory && history.length === 0) {
+    <p class="empty-history">Nenhum evento registrado para esta nota ainda.</p>
+  }
+
+  <div class="timeline">
+    @for (log of history; track log.id) {
+      <div class="entry">
+        <div class="entry-time">{{ log.created_at | date: 'dd/MM/yyyy HH:mm:ss' }}</div>
+        <div class="entry-event" [class.error]="isErrorEvent(log.event)">{{ eventLabel(log.event) }}</div>
+        <div class="entry-summary">{{ summary(log) }}</div>
+      </div>
+    }
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="dialogRef.close()">Fechar</button>
+</mat-dialog-actions>

@@ -1,0 +1,135 @@
+.summary {
+  margin-bottom: 16px;
+
+  .status {
+    margin-bottom: 12px;
+
+    .open {
+      background-color: #1976d2 !important;
+      color: #fff !important;
+
+      ::ng-deep .mdc-evolution-chip__text-label {
+        color: #fff !important;
+      }
+    }
+
+    .closed {
+      background-color: #388e3c !important;
+      color: #fff !important;
+
+      ::ng-deep .mdc-evolution-chip__text-label {
+        color: #fff !important;
+      }
+    }
+  }
+
+  .meta {
+    display: flex;
+    gap: 24px;
+    font-size: 0.85rem;
+    color: var(--mat-sys-on-surface-variant);
+
+    span {
+      font-weight: 600;
+      color: var(--mat-sys-on-surface);
+    }
+  }
+}
+
+h3 {
+  font-size: 0.95rem;
+  margin: 16px 0 8px;
+}
+
+.items-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+
+  th,
+  td {
+    text-align: left;
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--mat-sys-outline-variant);
+  }
+
+  th {
+    font-weight: 600;
+    color: var(--mat-sys-on-surface-variant);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+  }
+
+  .code {
+    font-weight: 600;
+  }
+
+  .product-link {
+    padding: 0 4px;
+    line-height: 32px;
+
+    mat-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+  }
+
+  .right {
+    text-align: right;
+  }
+
+  tfoot td {
+    border-top: 2px solid var(--mat-sys-outline-variant);
+    border-bottom: none;
+    font-weight: 600;
+  }
+
+  .total-label {
+    color: var(--mat-sys-on-surface-variant);
+    font-weight: 500;
+  }
+
+  .total {
+    font-size: 1.05rem;
+  }
+}
+
+.empty-history {
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 0.85rem;
+}
+
+.timeline {
+  max-height: 180px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .entry {
+    border-left: 3px solid var(--mat-sys-outline-variant);
+    padding-left: 12px;
+
+    .entry-time {
+      font-size: 0.75rem;
+      color: var(--mat-sys-on-surface-variant);
+    }
+
+    .entry-event {
+      font-weight: 600;
+
+      &.error {
+        color: #d32f2f;
+      }
+    }
+
+    .entry-summary {
+      font-size: 0.85rem;
+      color: var(--mat-sys-on-surface-variant);
+    }
+  }
+}

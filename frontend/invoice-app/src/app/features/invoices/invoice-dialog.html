@@ -1,0 +1,61 @@
+<h2 mat-dialog-title>Nova Nota Fiscal</h2>
+
+<mat-dialog-content>
+  <p class="subtitle">
+    A numeração é gerada automaticamente. A nota é criada com status <strong>Aberta</strong>.
+  </p>
+
+  <form [formGroup]="form">
+    <div formArrayName="items">
+      @for (row of items.controls; track $index; let i = $index) {
+        <div class="item-row" [formGroupName]="i">
+          <mat-form-field appearance="outline" class="product-field">
+            <mat-label>Produto</mat-label>
+            <mat-select formControlName="product_code">
+              @for (product of products; track product.code) {
+                <mat-option [value]="product.code">
+                  {{ product.code }} — {{ product.description }} (saldo {{ product.stock_quantity }})
+                </mat-option>
+              }
+            </mat-select>
+            @if (row.get('product_code')?.value) {
+              <mat-hint>Saldo disponível: {{ maxQuantity(row.get('product_code')?.value) }}</mat-hint>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="qty-field">
+            <mat-label>Qtd.</mat-label>
+            <input matInput formControlName="quantity" type="number" min="1" />
+            <mat-error>Quantidade deve ser ≥ 1</mat-error>
+          </mat-form-field>
+
+          <button
+            mat-icon-button
+            type="button"
+            [disabled]="items.length <= 1"
+            (click)="removeItem(i)"
+            matTooltip="Remover item"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      }
+    </div>
+
+    <button mat-stroked-button type="button" class="add-item" (click)="addItem()">
+      <mat-icon>add</mat-icon>
+      Adicionar produto
+    </button>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button type="button" (click)="dialogRef.close(false)" [disabled]="saving">Cancelar</button>
+  <button mat-flat-button color="primary" (click)="save()" [disabled]="saving">
+    @if (saving) {
+      <mat-spinner diameter="18"></mat-spinner>
+    } @else {
+      Criar Nota
+    }
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,97 @@
+<div class="header">
+  <h2>Notas Fiscais</h2>
+  <button mat-flat-button color="primary" (click)="openCreate()">
+    <mat-icon>add</mat-icon>
+    Nova Nota Fiscal
+  </button>
+</div>
+
+@if (loading) {
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+}
+
+<div class="table-container">
+  <table mat-table [dataSource]="invoices">
+    <ng-container matColumnDef="number">
+      <th mat-header-cell *matHeaderCellDef>Número</th>
+      <td mat-cell *matCellDef="let invoice">
+        <span class="number">#{{ invoice.number }}</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let invoice">
+        <mat-chip [class.open-chip]="invoice.status === 'OPEN'" [class.closed-chip]="invoice.status === 'CLOSED'">
+          {{ invoice.status === 'OPEN' ? 'Aberta' : 'Fechada' }}
+        </mat-chip>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="items">
+      <th mat-header-cell *matHeaderCellDef>Itens</th>
+      <td mat-cell *matCellDef="let invoice">
+        <div class="items-list">
+          @for (item of invoice.displayItems; track $index) {
+            <span class="item">
+              {{ item.description }} <strong>× {{ item.quantity }}</strong>
+            </span>
+          }
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="created_at">
+      <th mat-header-cell *matHeaderCellDef>Criada em</th>
+      <td mat-cell *matCellDef="let invoice">{{ invoice.created_at | date: 'dd/MM/yyyy HH:mm' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Ações</th>
+      <td mat-cell *matCellDef="let invoice" (click)="$event.stopPropagation()">
+        <div class="actions">
+          <button
+            mat-icon-button
+            matTooltip="Ver detalhes"
+            (click)="openDetail(invoice)"
+          >
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button
+            mat-flat-button
+            color="accent"
+            [disabled]="!canPrint(invoice)"
+            (click)="print(invoice)"
+            matTooltip="Imprimir nota fiscal (fecha a nota e baixa o estoque)"
+          >
+            @if (printingId === invoice.id) {
+              <mat-spinner diameter="18"></mat-spinner>
+              Imprimindo…
+            } @else {
+              <ng-container>
+                <mat-icon>print</mat-icon>
+                Imprimir
+              </ng-container>
+            }
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      class="clickable-row"
+      (click)="openDetail(row)"
+      matTooltip="Clique para ver detalhes"
+    ></tr>
+  </table>
+
+  @if (!loading && invoices.length === 0) {
+    <div class="empty">
+      <mat-icon>receipt_long</mat-icon>
+      <p>Nenhuma nota fiscal cadastrada.</p>
+    </div>
+  }
+</div>

@@ -1,0 +1,60 @@
+<h2 mat-dialog-title>
+  {{ isEdit ? 'Editar Produto' : 'Novo Produto' }}
+</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="form" class="form-grid">
+    <mat-form-field appearance="outline">
+      <mat-label>Código</mat-label>
+      <input matInput formControlName="code" placeholder="ex.: P001" />
+      <mat-icon matPrefix>tag</mat-icon>
+      <mat-error>O código é obrigatório</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Descrição</mat-label>
+      <textarea
+        matInput
+        formControlName="description"
+        rows="2"
+        placeholder="Nome do produto"
+      ></textarea>
+      <mat-error>A descrição é obrigatória</mat-error>
+    </mat-form-field>
+
+    <div class="ai-row">
+      <button
+        mat-stroked-button
+        type="button"
+        color="primary"
+        (click)="suggestWithAI()"
+        [disabled]="suggesting || saving"
+      >
+        @if (suggesting) {
+          <mat-spinner diameter="18"></mat-spinner>
+        } @else {
+          <mat-icon>auto_awesome</mat-icon>
+        }
+        Sugerir descrição com IA
+      </button>
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Saldo em Estoque</mat-label>
+      <input matInput formControlName="stock_quantity" type="number" min="0" />
+      <mat-icon matPrefix>inventory</mat-icon>
+      <mat-error>Informe um saldo maior ou igual a zero</mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button type="button" (click)="dialogRef.close(false)" [disabled]="saving">Cancelar</button>
+  <button mat-flat-button color="primary" (click)="save()" [disabled]="saving">
+    @if (saving) {
+      <mat-spinner diameter="18"></mat-spinner>
+    } @else {
+      Salvar
+    }
+  </button>
+</mat-dialog-actions>
