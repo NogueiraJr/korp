@@ -35,7 +35,11 @@ func (r *InvoiceRepository) Create(ctx context.Context, req models.CreateInvoice
 
 	var number int
 	if err := tx.QueryRow(ctx,
-		`UPDATE invoice_counters SET next_number = next_number + 1 WHERE id = 1 RETURNING next_number`,
+		`WITH seed AS (
+			INSERT INTO invoice_counters (id, next_number) VALUES (1, 0)
+			ON CONFLICT (id) DO NOTHING
+		)
+		UPDATE invoice_counters SET next_number = next_number + 1 WHERE id = 1 RETURNING next_number`,
 	).Scan(&number); err != nil {
 		return nil, err
 	}
